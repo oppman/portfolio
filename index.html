@@ -3,549 +3,807 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Opportun TWIZEYIMANA NDEKEZI — Frontend Developer</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<title> TWIZEYIMANA NDEKEZI Opportun | Frontend Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy: #0b1525;
-  --navy2: #111e32;
-  --navy3: #16273f;
-  --blue: #1e4a8a;
-  --blue-mid: #2563c8;
-  --blue-light: #3b82f6;
-  --blue-glow: #60a5fa;
-  --gold: #e8b84b;
-  --text: #f0f4ff;
-  --text2: #94afd4;
-  --text3: #4d6e99;
-  --border: rgba(59,130,246,0.15);
-  --border2: rgba(255,255,255,0.06);
+  --bg: #07090d;
+  --surface: #0f141b;
+  --surface-2: #151b23;
+  --ink: #f5f7fb;
+  --muted: #a5b0c0;
+  --soft: #6f7c8d;
+  --line: rgba(255,255,255,0.12);
+  --cyan: #47d7ff;
+  --lime: #b9ff66;
+  --coral: #ff7a59;
+  --violet: #9b8cff;
+  --shadow: 0 24px 80px rgba(0,0,0,0.42);
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--navy);
-  color: var(--text);
-  font-family: 'Manrope', sans-serif;
+  min-height: 100vh;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    radial-gradient(circle at 15% 10%, rgba(71,215,255,0.13), transparent 28%),
+    radial-gradient(circle at 86% 22%, rgba(185,255,102,0.09), transparent 24%),
+    linear-gradient(180deg, #06080c 0%, #0b0f14 48%, #080a0d 100%);
+  background-size: 72px 72px, 72px 72px, auto, auto, auto;
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.65;
   overflow-x: hidden;
 }
 
-/* ─── NAV ─── */
+a { color: inherit; }
+
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 99;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1.1rem 5%;
-  background: rgba(11,21,37,0.85);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border2);
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 5vw;
+  background: rgba(7,9,13,0.78);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(20px);
 }
-.nav-brand { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--text); letter-spacing: 0.01em; }
-.nav-brand span { color: var(--blue-glow); }
-.nav-menu { display: flex; gap: 2rem; list-style: none; }
-.nav-menu a { color: var(--text2); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
-.nav-menu a:hover { color: var(--blue-glow); }
-.nav-cta {
-  background: var(--blue-mid); color: #fff; text-decoration: none;
-  font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 6px;
-  transition: background 0.2s;
-}
-.nav-cta:hover { background: var(--blue-light); }
 
-/* ─── HERO ─── */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(71,215,255,0.45);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(71,215,255,0.18), rgba(185,255,102,0.12));
+  color: var(--cyan);
+  box-shadow: 0 0 28px rgba(71,215,255,0.16);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  list-style: none;
+}
+
+.nav-menu a {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+  color: var(--ink);
+}
+
+.nav-menu a.active {
+  position: relative;
+}
+
+.nav-menu a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.55rem;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--cyan), var(--lime));
+  box-shadow: 0 0 16px rgba(71,215,255,0.35);
+}
+
+.nav-cta, .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0.8rem 1.15rem;
+  border-radius: 8px;
+  border: 1px solid rgba(71,215,255,0.4);
+  background: rgba(71,215,255,0.1);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-cta:hover, .button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(185,255,102,0.65);
+  background: rgba(185,255,102,0.14);
+}
+
+.button.primary {
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--cyan), var(--lime));
+  color: #061014;
+  box-shadow: 0 14px 42px rgba(71,215,255,0.18);
+}
+
+.button.ghost { background: rgba(255,255,255,0.045); }
+
 .hero {
+  position: relative;
   min-height: 100vh;
-  display: flex; align-items: center;
-  padding: 8rem 5% 5rem;
-  position: relative; overflow: hidden;
+  display: grid;
+  align-items: center;
+  padding: 7.25rem 5vw 4rem;
+  overflow: hidden;
 }
-.hero-bg-circle {
-  position: absolute; border-radius: 50%; pointer-events: none;
-}
-.hbc1 { width: 700px; height: 700px; background: radial-gradient(circle, rgba(37,99,200,0.13) 0%, transparent 70%); top: -200px; right: -200px; }
-.hbc2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%); bottom: -150px; left: -150px; }
 
-.hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--blue-glow); margin-bottom: 1.5rem;
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 5vw 2rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(71,215,255,0.45), rgba(185,255,102,0.38), transparent);
 }
-.hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--blue-glow); }
+
+.hero-inner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.75fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.eyebrow, .section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--cyan);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before, .section-label::before {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: currentColor;
+}
+
+h1, h2, h3 {
+  font-family: "Space Grotesk", Inter, sans-serif;
+  letter-spacing: 0;
+  line-height: 1.02;
+}
+
 h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.8rem, 5.5vw, 4.5rem);
-  font-weight: 800; line-height: 1.05;
-  letter-spacing: -0.02em; margin-bottom: 1.5rem;
+  max-width: 780px;
+  margin: 1.2rem 0 1.35rem;
+  font-size: clamp(3.2rem, 8vw, 7.4rem);
+  font-weight: 700;
 }
-h1 .highlight { color: var(--blue-glow); display: block; }
-.hero-sub { color: var(--text2); font-size: 16px; max-width: 480px; margin-bottom: 2.5rem; line-height: 1.8; }
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn-main {
-  background: var(--blue-mid); color: #fff;
-  padding: 13px 28px; border-radius: 8px; font-size: 14px; font-weight: 600;
-  text-decoration: none; transition: all 0.2s; border: none; cursor: pointer;
-  display: inline-flex; align-items: center; gap: 6px;
-}
-.btn-main:hover { background: var(--blue-light); transform: translateY(-2px); }
-.btn-outline {
-  background: transparent; color: var(--text);
-  padding: 13px 28px; border-radius: 8px; font-size: 14px; font-weight: 600;
-  text-decoration: none; border: 1px solid var(--border2); transition: all 0.2s;
-  display: inline-flex; align-items: center; gap: 6px;
-}
-.btn-outline:hover { border-color: var(--blue-glow); color: var(--blue-glow); transform: translateY(-2px); }
 
-.hero-card {
-  background: var(--navy2);
-  border: 1px solid var(--border);
-  border-radius: 16px; padding: 2rem;
-  min-width: 220px; text-align: center;
+.accent-text {
+  color: transparent;
+  background: linear-gradient(90deg, var(--ink), var(--cyan) 45%, var(--lime));
+  -webkit-background-clip: text;
+  background-clip: text;
 }
-.avatar {
-  width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 1rem;
-  background: linear-gradient(135deg, var(--blue-mid), var(--blue-glow));
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: #fff;
-  border: 3px solid rgba(96,165,250,0.3);
-}
-.profile-image {
-  width: 84px; height: 84px; border-radius: 50%; display: block; margin: 0 auto 1.25rem;
-  object-fit: cover; border: 3px solid rgba(96,165,250,0.3);
-  background: var(--navy3);
-}
-.hero-card-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 3px; }
-.hero-card-role { font-size: 12px; color: var(--blue-glow); margin-bottom: 1.5rem; }
-.status-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #4ade80; margin-right: 6px; animation: blink 2s infinite; }
-@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
-.hero-card-status { font-size: 12px; color: var(--text2); }
-.hero-card-divider { border: none; border-top: 1px solid var(--border2); margin: 1.2rem 0; }
-.hero-card-stat { font-size: 12px; color: var(--text2); }
-.hero-card-stat span { color: var(--text); font-weight: 600; }
 
-/* ─── CONTAINER ─── */
-.container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
+.hero-copy {
+  max-width: 650px;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+}
 
-/* ─── SECTION COMMON ─── */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.signal-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  max-width: 620px;
+  margin-top: 2.4rem;
+}
+
+.signal {
+  min-height: 90px;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(15,20,27,0.72);
+  backdrop-filter: blur(14px);
+}
+
+.signal strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--ink);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.signal span { color: var(--soft); font-size: 12px; }
+
+.portrait-wrap {
+  position: relative;
+  min-height: 620px;
+  display: grid;
+  align-items: center;
+}
+
+.portrait-panel {
+  position: relative;
+  min-height: 600px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 8px;
+  background: #111;
+  box-shadow: var(--shadow);
+}
+
+.portrait-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, transparent 56%, rgba(7,9,13,0.92)),
+    linear-gradient(90deg, rgba(71,215,255,0.22), transparent 32%, rgba(185,255,102,0.14));
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.portrait-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 11px);
+  opacity: 0.34;
+  pointer-events: none;
+}
+
+.portrait-panel img {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  display: block;
+  object-fit: cover;
+  filter: contrast(1.08) saturate(0.75);
+}
+
+.floating-card {
+  position: absolute;
+  z-index: 5;
+  right: -1.2rem;
+  bottom: 3rem;
+  width: min(270px, 82%);
+  padding: 1rem;
+  border: 1px solid rgba(71,215,255,0.35);
+  border-radius: 8px;
+  background: rgba(10,14,20,0.82);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 48px rgba(0,0,0,0.38);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 0 6px rgba(185,255,102,0.12);
+}
+
+.floating-card h3 { margin-bottom: 0.45rem; font-size: 1rem; }
+.floating-card p { color: var(--muted); font-size: 13px; line-height: 1.55; }
+
+.container {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
 .section { padding: 6rem 0; }
-.section-label {
-  display: flex; align-items: center; gap: 12px;
-  font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--blue-glow); margin-bottom: 1rem;
+.section.dark { background: rgba(255,255,255,0.025); border-block: 1px solid rgba(255,255,255,0.06); }
+
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.2rem;
 }
-.section-label::after { content: ''; flex: 0 0 40px; height: 1px; background: var(--blue-glow); opacity: 0.5; }
+
 h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 700; letter-spacing: -0.02em; margin-bottom: 3rem; line-height: 1.15;
+  max-width: 700px;
+  margin-top: 0.75rem;
+  font-size: clamp(2rem, 4vw, 3.4rem);
 }
-h2 em { color: var(--blue-glow); font-style: normal; }
 
-/* ─── ABOUT ─── */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-.about-text p { color: var(--text2); margin-bottom: 1.2rem; line-height: 1.9; }
-.about-text p strong { color: var(--text); font-weight: 600; }
-.about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
-.fact-card {
-  background: var(--navy2); border: 1px solid var(--border2);
-  border-radius: 10px; padding: 1.2rem;
+.section-note {
+  max-width: 420px;
+  color: var(--muted);
 }
-.fact-val { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--blue-glow); }
-.fact-label { font-size: 12px; color: var(--text3); margin-top: 2px; }
 
-/* ─── SKILLS ─── */
-.skills-section { background: var(--navy2); }
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.2rem;
+}
+
+.panel, .project-card, .skill-card, .timeline-item, .contact-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(21,27,35,0.82), rgba(12,16,22,0.82));
+  box-shadow: 0 18px 60px rgba(0,0,0,0.18);
+}
+
+.panel { padding: clamp(1.3rem, 3vw, 2rem); }
+.panel p { color: var(--muted); margin-bottom: 1rem; }
+.panel p:last-child { margin-bottom: 0; }
+.panel strong { color: var(--ink); }
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.mini-stat {
+  min-height: 132px;
+  padding: 1.25rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.035);
+}
+
+.mini-stat b {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--cyan);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.75rem;
+}
+
+.mini-stat span { color: var(--muted); font-size: 13px; }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
 .skill-card {
-  background: var(--navy3); border: 1px solid var(--border);
-  border-radius: 12px; padding: 1.75rem;
-  transition: transform 0.25s, border-color 0.25s;
-}
-.skill-card:hover { transform: translateY(-4px); border-color: rgba(59,130,246,0.4); }
-.skill-icon { font-size: 1.5rem; margin-bottom: 1rem; }
-.skill-card-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 1rem; }
-.skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
-.stag {
-  font-size: 12px; padding: 3px 11px; border-radius: 4px;
-  background: rgba(37,99,200,0.15); color: var(--blue-glow);
-  border: 1px solid rgba(59,130,246,0.2); font-weight: 500;
+  min-height: 215px;
+  padding: 1.35rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-/* ─── PROJECTS ─── */
-.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+.skill-card:hover, .project-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(71,215,255,0.42);
+}
+
+.skill-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background: rgba(71,215,255,0.1);
+  color: var(--cyan);
+  font-weight: 900;
+}
+
+.skill-card h3 { margin-bottom: 0.9rem; font-size: 1rem; }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tag {
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 0.28rem 0.55rem;
+  background: rgba(255,255,255,0.04);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
 .project-card {
-  background: var(--navy2); border: 1px solid var(--border2);
-  border-radius: 14px; overflow: hidden;
-  transition: transform 0.25s, border-color 0.25s;
-  display: flex; flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
-.project-card:hover { transform: translateY(-5px); border-color: var(--border); }
-.project-card.wide { grid-column: span 2; flex-direction: row; }
-.project-thumb {
-  height: 180px; display: flex; align-items: center; justify-content: center;
-  font-size: 3rem; background: var(--navy3); border-bottom: 1px solid var(--border2);
-  flex-shrink: 0;
-}
-.project-card.wide .project-thumb { width: 260px; height: auto; border-bottom: none; border-right: 1px solid var(--border2); }
-.project-body { padding: 1.75rem; flex: 1; }
-.project-num { font-size: 11px; color: var(--text3); letter-spacing: 0.08em; margin-bottom: 0.5rem; }
-.project-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.6rem; }
-.project-desc { color: var(--text2); font-size: 13.5px; line-height: 1.75; margin-bottom: 1.25rem; }
-.project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.25rem; }
-.ptag { font-size: 11px; padding: 2px 9px; border-radius: 3px; background: rgba(37,99,200,0.15); color: var(--blue-glow); border: 1px solid rgba(59,130,246,0.2); }
-.project-links { display: flex; gap: 1rem; }
-.plink { font-size: 13px; color: var(--text3); text-decoration: none; font-weight: 500; transition: color 0.2s; }
-.plink:hover { color: var(--blue-glow); }
 
-/* ─── EXPERIENCE ─── */
-.exp-section { background: var(--navy2); }
-.exp-list { display: flex; flex-direction: column; gap: 0; }
-.exp-item {
-  display: grid; grid-template-columns: 160px 1fr;
-  gap: 2rem; padding: 2.5rem 0;
-  border-bottom: 1px solid var(--border2);
-}
-.exp-item:last-child { border-bottom: none; }
-.exp-period { font-size: 13px; color: var(--text3); padding-top: 3px; }
-.exp-dot { display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue-light); flex-shrink: 0; }
-.exp-role { font-weight: 700; font-size: 1rem; }
-.exp-company { font-size: 13px; color: var(--blue-glow); margin-bottom: 0.75rem; }
-.exp-desc { color: var(--text2); font-size: 14px; line-height: 1.8; }
-.exp-skills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.75rem; }
-.eskill { font-size: 11px; padding: 2px 9px; border-radius: 3px; background: var(--navy3); color: var(--text3); border: 1px solid var(--border2); }
+.project-card.featured { grid-column: span 2; display: grid; grid-template-columns: 0.85fr 1.15fr; }
 
-/* ─── CONTACT ─── */
-.contact-box {
-  background: var(--navy2); border: 1px solid var(--border);
-  border-radius: 20px; padding: 4rem; text-align: center; position: relative; overflow: hidden;
+.project-visual {
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background:
+    linear-gradient(135deg, rgba(71,215,255,0.16), transparent 42%),
+    linear-gradient(315deg, rgba(185,255,102,0.13), transparent 42%),
+    #0a0f15;
 }
-.contact-box::before {
-  content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(37,99,200,0.15) 0%, transparent 70%);
-  top: -150px; left: 50%; transform: translateX(-50%); pointer-events: none;
-}
-.contact-box h2 { margin-bottom: 0.75rem; }
-.contact-box p { color: var(--text2); max-width: 460px; margin: 0 auto 2.5rem; }
-.contact-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-.contact-btn {
-  display: flex; align-items: center; gap: 10px;
-  background: #ffffff; border: 2px solid var(--blue-mid);
-  border-radius: 10px; padding: 14px 22px;
-  text-decoration: none; color: var(--blue-mid); font-size: 14px; font-weight: 600;
-  transition: all 0.2s; min-width: 170px; justify-content: center;
-}
-.contact-btn:hover { background: var(--blue-mid); color: #ffffff; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37,99,200,0.3); }
-.cbicon { font-size: 1.1rem; }
 
-/* ─── FOOTER ─── */
+.browser-frame {
+  width: min(360px, 100%);
+  aspect-ratio: 1.35;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px;
+  background:
+    linear-gradient(#161d26 0 34px, transparent 34px),
+    linear-gradient(135deg, rgba(71,215,255,0.22), rgba(185,255,102,0.12));
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+}
+
+.project-body { padding: clamp(1.35rem, 3vw, 2rem); }
+.project-kicker { color: var(--cyan); font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.project-title { margin: 0.6rem 0; font-size: 1.45rem; }
+.project-desc { color: var(--muted); margin-bottom: 1.2rem; }
+.project-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.3rem; }
+.project-links a { color: var(--ink); font-size: 13px; font-weight: 800; text-decoration: none; }
+.project-links a:hover { color: var(--lime); }
+
+.timeline {
+  display: grid;
+  gap: 1rem;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.5rem;
+  padding: 1.4rem;
+}
+
+.period { color: var(--soft); font-size: 13px; font-weight: 800; }
+.role { margin-bottom: 0.25rem; font-size: 1.05rem; }
+.company { color: var(--cyan); font-size: 13px; font-weight: 700; margin-bottom: 0.65rem; }
+.timeline-item p { color: var(--muted); }
+
+.contact-panel {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+.contact-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(71,215,255,0.12), transparent 35%, rgba(185,255,102,0.1));
+  pointer-events: none;
+}
+
+.contact-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: end;
+}
+
+.contact-content p { max-width: 560px; color: var(--muted); margin-top: 1rem; }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: flex-end; }
+
 footer {
-  border-top: 1px solid var(--border2);
-  padding: 1.5rem 5%;
-  display: flex; justify-content: space-between; align-items: center;
-  font-size: 12px; color: var(--text3);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.4rem 5vw;
+  border-top: 1px solid var(--line);
+  color: var(--soft);
+  font-size: 12px;
 }
 
-/* ─── REVEAL ─── */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
 .reveal.in { opacity: 1; transform: none; }
 
-/* ─── RESPONSIVE ─── */
-@media (max-width: 860px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-card { display: none; }
-  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .projects-grid { grid-template-columns: 1fr; }
-  .project-card.wide { flex-direction: column; grid-column: span 1; }
-  .project-card.wide .project-thumb { width: 100%; height: 160px; border-right: none; border-bottom: 1px solid var(--border2); }
-  .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
-  nav .nav-menu, nav .nav-cta { display: none; }
+@media (max-width: 960px) {
+  .hero-inner, .about-grid, .contact-content { grid-template-columns: 1fr; }
+  .portrait-wrap { min-height: auto; }
+  .portrait-panel, .portrait-panel img { min-height: 520px; }
+  .floating-card { right: 1rem; }
+  .section-head { display: block; }
+  .section-note { margin-top: 1rem; }
+  .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact-actions { justify-content: flex-start; }
+}
+
+@media (max-width: 720px) {
+  nav { padding: 0.85rem 1rem; }
+  .brand span:last-child { display: none; }
+  .nav-menu, .nav-cta { display: none; }
+  .hero { padding: 5.5rem 1rem 3rem; }
+  .container { padding: 0 1rem; }
+  .signal-row, .info-grid, .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+  .project-card.featured { grid-column: auto; grid-template-columns: 1fr; }
+  .timeline-item { grid-template-columns: 1fr; }
+  .portrait-panel, .portrait-panel img { min-height: 460px; }
+  .floating-card { position: relative; right: auto; bottom: auto; width: 100%; margin-top: 1rem; }
+  .section { padding: 4rem 0; }
+  footer { flex-direction: column; }
 }
 </style>
 </head>
 <body>
+  <nav>
+    <a class="brand" href="#top" aria-label="Home">
+      <span class="brand-mark">TNO</span>
+      <span>TWIZEYIMANA NDEKEZI Opportun</span>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Contact me</a>
+  </nav>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-brand">T<span>.</span>Opportun</div>
-  <ul class="nav-menu">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Hire me</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hbc1 hero-bg-circle"></div>
-  <div class="hbc2 hero-bg-circle"></div>
-  <div class="hero-inner">
-    <div>
-      <div class="hero-eyebrow">Frontend Developer</div>
-      <h1>
-        Twizeyimana<br />Ndekezi
-        <span class="highlight">Opportun</span>
-      </h1>
-      <p class="hero-sub">
-        I craft beautiful, responsive web interfaces that deliver real value.
-        Based in Kigali, Rwanda — focused on clean code, great UX, and
-        continuous growth.
-      </p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn-main">View my work ↓</a>
-        <a href="#contact" class="btn-outline">Get in touch</a>
-      </div>
-    </div>
-    <div class="hero-card">
-      <img src="image/WhatsApp Image 2026-06-03 at 05.45.43.jpeg" alt="Profile placeholder" class="profile-image" />
-      <div class="hero-card-name">Opportun T. Ndekezi</div>
-      <div class="hero-card-role">Frontend Developer</div>
-      <div class="hero-card-status">
-        <span class="status-dot"></span>Available for work
-      </div>
-      <hr class="hero-card-divider" />
-      <div class="hero-card-stat">📍 Kigali, Rwanda</div>
-      <div class="hero-card-stat" style="margin-top:6px">🎓 <span>1 year</span> experience</div>
-      <div class="hero-card-stat" style="margin-top:6px">💻 <span>React</span> · JS · CSS</div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="section" id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="reveal">
-        <div class="section-label">About me</div>
-        <h2>Passionate about<br /><em>great interfaces</em></h2>
-        <div class="about-text">
-          <p>
-            I'm <strong>Opportun</strong>, a frontend developer from Kigali, Rwanda with a strong
-            focus on writing clean, maintainable code and building pixel-perfect interfaces
-            that work seamlessly across all devices.
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="eyebrow">Frontend Developer</div>
+          <h1>Building <span class="accent-text">future-ready</span> web interfaces.</h1>
+          <p class="hero-copy">
+            I am TWIZEYIMANA NDEKEZI Opportun, a Kigali-based frontend developer focused on responsive websites, polished user interfaces, and clean React-ready code.
           </p>
-          <p>
-            Over the past year I've worked on real-world projects ranging from business landing pages
-            to React-powered web apps — sharpening my skills in component architecture,
-            performance, and accessibility along the way.
-          </p>
-          <p>
-            I'm passionate about the craft of frontend development and always looking to
-            learn from experienced teammates and challenging problems.
-          </p>
-        </div>
-      </div>
-      <div class="reveal" style="transition-delay:0.1s">
-        <div class="about-facts">
-          <div class="fact-card">
-            <div class="fact-val">1+</div>
-            <div class="fact-label">Year of experience</div>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">View Work</a>
+            <a class="button ghost" href="#contact">Contact Me</a>
           </div>
-          <div class="fact-card">
-            <div class="fact-val">10+</div>
-            <div class="fact-label">Projects delivered</div>
-          </div>
-          <div class="fact-card">
-            <div class="fact-val">3</div>
-            <div class="fact-label">Core frameworks</div>
-          </div>
-          <div class="fact-card">
-            <div class="fact-val">🇷🇼</div>
-            <div class="fact-label">Based in Kigali</div>
+          <div class="signal-row" aria-label="Portfolio highlights">
+            <div class="signal"><strong>10+</strong><span>Projects delivered</span></div>
+            <div class="signal"><strong>1+</strong><span>Year of experience</span></div>
+            <div class="signal"><strong>3</strong><span>Languages spoken</span></div>
           </div>
         </div>
-        <div style="margin-top:2rem;padding:1.5rem;background:var(--navy2);border:1px solid var(--border);border-radius:12px;">
-          <div style="font-size:12px;color:var(--text3);margin-bottom:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;">Languages</div>
-          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-            <span style="font-size:13px;color:var(--text2)">🇬🇧 English</span>
-            <span style="font-size:13px;color:var(--text2)">🇫🇷 French</span>
-            <span style="font-size:13px;color:var(--text2)">🇷🇼 Kinyarwanda</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- SKILLS -->
-<section class="section skills-section" id="skills">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">What I work with</div>
-      <h2>My <em>Tech Stack</em></h2>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-card reveal">
-        <div class="skill-icon">🖥️</div>
-        <div class="skill-card-title">Core Languages</div>
-        <div class="skill-tags">
-          <span class="stag">HTML5</span>
-          <span class="stag">CSS3</span>
-          <span class="stag">JavaScript (ES6+)</span>
-        </div>
-      </div>
-      <div class="skill-card reveal" style="transition-delay:0.07s">
-        <div class="skill-icon">⚛️</div>
-        <div class="skill-card-title">Frameworks & Libraries</div>
-        <div class="skill-tags">
-          <span class="stag">React</span>
-          <span class="stag">Tailwind CSS</span>
-          <span class="stag">Bootstrap</span>
-        </div>
-      </div>
-      <div class="skill-card reveal" style="transition-delay:0.14s">
-        <div class="skill-icon">🎨</div>
-        <div class="skill-card-title">UI & Design</div>
-        <div class="skill-tags">
-          <span class="stag">Figma</span>
-          <span class="stag">Responsive Design</span>
-          <span class="stag">CSS Animations</span>
-        </div>
-      </div>
-      <div class="skill-card reveal" style="transition-delay:0.21s">
-        <div class="skill-icon">🔧</div>
-        <div class="skill-card-title">Tools & Workflow</div>
-        <div class="skill-tags">
-          <span class="stag">Git & GitHub</span>
-          <span class="stag">VS Code</span>
-          <span class="stag">REST APIs</span>
-          <span class="stag">npm</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section class="section" id="projects">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">What I've built</div>
-      <h2>Selected <em>Projects</em></h2>
-    </div>
-    <div class="projects-grid">
-
-      <div class="project-card wide reveal">
-        <div class="project-thumb">🌐</div>
-        <div class="project-body">
-          <div class="project-num">01 — Featured</div>
-          <div class="project-title">SOS Neon Portfolio</div>
-          <p class="project-desc">
-            A polished portfolio website showcasing my best frontend work.
-            Built with modern responsive design for desktop and mobile,
-            and deployed live on Vercel.
-          </p>
-          <div class="project-tags">
-            <span class="ptag">HTML</span>
-            <span class="ptag">CSS</span>
-            <span class="ptag">JavaScript</span>
-            <span class="ptag">Vercel</span>
+        <div class="portrait-wrap">
+          <div class="portrait-panel">
+            <img src="image/WhatsApp Image 2026-06-03 at 05.45.43.jpeg" alt="Opportun Twizeyimana Ndekezi portrait" />
           </div>
-          <div class="project-links">
-            <a href="https://sos-neon-two.vercel.app/" target="_blank" class="plink">Live Demo ↗</a>
-            <a href="#" class="plink">GitHub ↗</a>
+          <aside class="floating-card" aria-label="Availability">
+            <div class="status"><span>Available</span><span class="pulse"></span></div>
+            <h3>Junior frontend roles and freelance builds</h3>
+            <p>Responsive websites, landing pages, React interfaces, and modern portfolio experiences.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-label">About</div>
+            <h2>Professional, precise, and always improving.</h2>
+          </div>
+          <p class="section-note">I care about interfaces that feel sharp, load fast, and make information easy to use on every screen size.</p>
+        </div>
+        <div class="about-grid">
+          <div class="panel reveal">
+            <p><strong>I build digital experiences with a frontend-first mindset.</strong> My work combines clean HTML, modern CSS, JavaScript, and Vue fundamentals to create websites that are easy to maintain and comfortable to use.</p>
+            <p>I enjoy transforming ideas into complete pages, improving visual details, and learning from real project constraints. I am currently open to junior frontend opportunities and freelance work.</p>
+          </div>
+          <div class="info-grid reveal" style="transition-delay:0.08s">
+            <div class="mini-stat"><b>Kigali</b><span>Based in Rwanda and open to remote collaboration.</span></div>
+            <div class="mini-stat"><b>Vue</b><span>Comfortable with component-based interfaces.</span></div>
+            <div class="mini-stat"><b>UX</b><span>Focused on clarity, spacing, and responsive behavior.</span></div>
+            <div class="mini-stat"><b>EN / FR / RW</b><span>English, French, and Kinyarwanda.</span></div>
           </div>
         </div>
       </div>
+    </section>
 
-
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="section exp-section" id="experience">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">Where I've worked</div>
-      <h2>Work <em>Experience</em></h2>
-    </div>
-    <div class="exp-list">
-      <div class="exp-item reveal">
-        <div class="exp-period">2024 — Present</div>
-        <div>
-          <div class="exp-dot"><span class="dot"></span><span class="exp-role">Junior Frontend Developer</span></div>
-          <div class="exp-company">Tech Company · Kigali, Rwanda</div>
-          <div class="exp-desc">
-            Building and maintaining responsive web interfaces using React and Tailwind CSS.
-            Collaborating closely with designers and backend developers in agile sprints
-            to ship features on schedule. Improving component reusability and code quality
-            through code reviews and team feedback.
+    <section class="section dark" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-label">Stack</div>
+            <h2>Tools for polished frontend work.</h2>
           </div>
-          <div class="exp-skills">
-            <span class="eskill">React</span>
-            <span class="eskill">Tailwind CSS</span>
-            <span class="eskill">Git</span>
-            <span class="eskill">Agile</span>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <div class="skill-icon">01</div>
+            <h3>Core Languages</h3>
+            <div class="tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span></div>
+          </article>
+          <article class="skill-card reveal" style="transition-delay:0.06s">
+            <div class="skill-icon">02</div>
+            <h3>Frameworks</h3>
+            <div class="tags"><span class="tag">React</span><span class="tag">Tailwind CSS</span><span class="tag">Bootstrap</span></div>
+          </article>
+          <article class="skill-card reveal" style="transition-delay:0.12s">
+            <div class="skill-icon">03</div>
+            <h3>Design Systems</h3>
+            <div class="tags"><span class="tag">Figma</span><span class="tag">Responsive UI</span><span class="tag">Animation</span></div>
+          </article>
+          <article class="skill-card reveal" style="transition-delay:0.18s">
+            <div class="skill-icon">04</div>
+            <h3>Workflow</h3>
+            <div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">npm</span><span class="tag">REST APIs</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-label">Projects</div>
+            <h2>Selected work with a clean, modern finish.</h2>
+          </div>
+          <p class="section-note">A focused snapshot of the kind of interface work I like to build: responsive, direct, and visually memorable.</p>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card featured reveal">
+            <div class="project-visual"><div class="browser-frame" aria-hidden="true"></div></div>
+            <div class="project-body">
+              <div class="project-kicker">Featured project</div>
+              <h3 class="project-title">RWANDA KINGS Game</h3>
+              <p class="project-desc">A live game experience built with HTML, CSS, and JavaScript about kings of RWANDA and their history.</p>
+              <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Netlify</span></div>
+              <div class="project-links">
+                <a href="https://opportun96.netlify.app" target="_blank" rel="noreferrer">Live Demo -></a>
+                <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub -></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-label">Experience</div>
+            <h2>Growing through real projects and collaboration.</h2>
+          </div>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <div class="period">2024 - Present</div>
+            <div>
+              <h3 class="role">Junior Frontend Developer</h3>
+              <div class="company">Tech Company - Kigali, Rwanda</div>
+              <p>Building responsive interfaces, collaborating with teams, and improving component quality with React and Tailwind CSS.</p>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="period">2023 - 2024</div>
+            <div>
+              <h3 class="role">Freelance Web Developer</h3>
+              <div class="company">Self-employed</div>
+              <p>Designed and delivered websites for local clients, from layout planning to deployment-ready responsive pages.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div class="contact-content">
+            <div>
+              <div class="section-label">Contact</div>
+              <h2>Let us build something sharp.</h2>
+              <p>I am available for junior frontend roles, portfolio redesigns, business websites, and freelance frontend projects.</p>
+            </div>
+            <div class="contact-actions">
+              <a class="button primary" href="mailto:ndekeziopportun96@gmail.com">Email Me</a>
+              <a class="button ghost" href="tel:+250788123456">Call</a>
+              <a class="button ghost" href="https://linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="exp-item reveal">
-        <div class="exp-period">2023 — 2024</div>
-        <div>
-          <div class="exp-dot"><span class="dot"></span><span class="exp-role">Freelance Web Developer</span></div>
-          <div class="exp-company">Self-employed</div>
-          <div class="exp-desc">
-            Designed and built websites for local businesses and NGOs in Rwanda.
-            Delivered fully responsive, fast-loading sites from wireframe to deployment.
-            Managed client communication, requirements gathering, and revisions independently.
-          </div>
-          <div class="exp-skills">
-            <span class="eskill">HTML/CSS</span>
-            <span class="eskill">JavaScript</span>
-            <span class="eskill">WordPress</span>
-            <span class="eskill">Client Management</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
+  </main>
 
-<!-- CONTACT -->
-<section class="section" id="contact">
-  <div class="container">
-    <div class="contact-box reveal">
-      <div class="section-label" style="justify-content:center">Let's work together</div>
-      <h2>Open to <em>new opportunities</em></h2>
-      <p>
-        I'm actively looking for junior frontend roles and freelance projects.
-        If you have something in mind, I'd love to hear from you.
-      </p>
-      <div class="contact-row">
-        <a href="mailto:ndekeziopportun96@gamil.com" class="contact-btn">
-          <span class="cbicon">✉️</span> Email
-        </a>
-        <a href="tel:+250788123456" class="contact-btn">
-          <span class="cbicon">📱</span> Phone
-        </a>
-        <a href="https://github.com/" target="_blank" class="contact-btn">
-          <span class="cbicon">💻</span> GitHub
-        </a>
-        <a href="https://linkedin.com/" target="_blank" class="contact-btn">
-          <span class="cbicon">🔗</span> LinkedIn
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <span>© 2025 Twizeyimana Ndekezi Opportun</span>
-  <span>Kigali, Rwanda 🇷🇼</span>
-</footer>
+  <footer>
+    <span>&copy; 2026 Opportun Twizeyimana Ndekezi</span>
+    <span>Kigali, Rwanda</span>
+  </footer>
 
 <script>
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("in");
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
+
+const navLinks = Array.from(document.querySelectorAll(".nav-menu a"));
+const sections = navLinks
+  .map(link => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
+
+const setActiveNav = id => {
+  navLinks.forEach(link => {
+    link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+  });
+};
+
+const navObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) setActiveNav(entry.target.id);
+  });
+}, {
+  rootMargin: "-35% 0px -55% 0px",
+  threshold: 0
+});
+
+sections.forEach(section => navObserver.observe(section));
 </script>
 </body>
 </html>
