@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title> TWIZEYIMANA NDEKEZI Opportun | Frontend Developer</title>
+<title>TWIZEYIMANA NDEKEZI Opportun | Full-Stack Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -468,13 +468,13 @@ h2 {
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.project-card.featured { grid-column: span 2; display: grid; grid-template-columns: 0.85fr 1.15fr; }
+.project-card.featured { display: grid; grid-template-rows: auto 1fr; }
 
 .project-visual {
-  min-height: 280px;
+  min-height: 230px;
   display: grid;
   place-items: center;
-  padding: 2rem;
+  padding: 1.35rem;
   background:
     linear-gradient(135deg, rgba(71,215,255,0.16), transparent 42%),
     linear-gradient(315deg, rgba(185,255,102,0.13), transparent 42%),
@@ -482,14 +482,211 @@ h2 {
 }
 
 .browser-frame {
-  width: min(360px, 100%);
-  aspect-ratio: 1.35;
+  position: relative;
+  width: min(500px, 100%);
+  aspect-ratio: 1.45;
+  overflow: hidden;
   border: 1px solid rgba(255,255,255,0.18);
   border-radius: 8px;
   background:
     linear-gradient(#161d26 0 34px, transparent 34px),
     linear-gradient(135deg, rgba(71,215,255,0.22), rgba(185,255,102,0.12));
   box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+}
+
+.browser-frame::before {
+  content: "";
+  position: absolute;
+  inset: 12px auto auto 14px;
+  z-index: 2;
+  width: 44px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--coral) 0 8px, var(--lime) 8px 18px, var(--cyan) 18px 28px);
+}
+
+.browser-frame img {
+  position: absolute;
+  inset: 34px 0 0;
+  width: 100%;
+  height: calc(100% - 34px);
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.browser-frame.explore-preview img {
+  object-position: center 58%;
+  transform: scale(1.04);
+}
+
+.explore-mock {
+  position: absolute;
+  inset: 34px 0 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(8,18,13,0.72), rgba(7,13,10,0.92)),
+    url("https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&w=900&q=80");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.explore-mock::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.62));
+}
+
+.mock-nav,
+.mock-content {
+  position: relative;
+  z-index: 1;
+}
+
+.mock-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0.9rem;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.mock-nav span:last-child {
+  color: var(--lime);
+}
+
+.mock-content {
+  align-self: end;
+  padding: 0 0.9rem 0.9rem;
+}
+
+.mock-kicker {
+  color: var(--lime);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mock-content h4 {
+  margin: 0.2rem 0 0.65rem;
+  font-family: "Space Grotesk", Inter, sans-serif;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  line-height: 1;
+}
+
+.mock-places {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.45rem;
+}
+
+.mock-place {
+  min-height: 58px;
+  display: flex;
+  align-items: end;
+  padding: 0.45rem;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 6px;
+  background: rgba(7,13,10,0.58);
+  color: rgba(255,255,255,0.86);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.browser-frame.kingdom-preview img {
+  object-position: center 34%;
+  transform: scale(1.18);
+}
+
+.kingdom-mock {
+  position: absolute;
+  inset: 34px 0 0;
+  display: grid;
+  grid-template-columns: 0.88fr 1.12fr;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(155,140,255,0.24), transparent 34%),
+    linear-gradient(135deg, #0c101a, #121927);
+}
+
+.king-image {
+  position: relative;
+  overflow: hidden;
+  min-height: 100%;
+  border-right: 1px solid rgba(255,255,255,0.14);
+}
+
+.king-image img {
+  position: static;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 22%;
+  transform: scale(1.08);
+  filter: sepia(0.16) contrast(1.08);
+}
+
+.kingdom-info {
+  display: grid;
+  align-content: center;
+  gap: 0.55rem;
+  padding: 1rem;
+}
+
+.kingdom-info span {
+  color: var(--cyan);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.kingdom-info h4 {
+  font-family: "Space Grotesk", Inter, sans-serif;
+  font-size: clamp(1.15rem, 2.5vw, 1.8rem);
+  line-height: 1;
+}
+
+.kingdom-info p {
+  color: rgba(245,247,251,0.72);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.kingdom-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.kingdom-badges b {
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 5px;
+  padding: 0.22rem 0.42rem;
+  color: rgba(245,247,251,0.88);
+  background: rgba(255,255,255,0.06);
+  font-size: 10px;
+}
+
+.project-card.tourism .project-visual {
+  background:
+    linear-gradient(135deg, rgba(185,255,102,0.18), transparent 42%),
+    linear-gradient(315deg, rgba(255,122,89,0.16), transparent 44%),
+    #0c120f;
+}
+
+.project-card.kingdom .project-visual {
+  background:
+    linear-gradient(135deg, rgba(71,215,255,0.18), transparent 38%),
+    linear-gradient(315deg, rgba(155,140,255,0.16), transparent 44%),
+    #090d16;
 }
 
 .project-body { padding: clamp(1.35rem, 3vw, 2rem); }
@@ -535,13 +732,109 @@ h2 {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
   gap: 2rem;
-  align-items: end;
+  align-items: start;
 }
 
 .contact-content p { max-width: 560px; color: var(--muted); margin-top: 1rem; }
-.contact-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: flex-end; }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+
+.contact-card,
+.contact-form {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1.1rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  background: rgba(7,9,13,0.42);
+}
+
+.contact-side {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.contact-line:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.contact-line strong {
+  color: var(--ink);
+  font-size: 13px;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.contact-form {
+  gap: 0.9rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.form-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.form-field label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.055);
+  color: var(--ink);
+  font: inherit;
+  outline: none;
+  padding: 0.8rem 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.form-field textarea {
+  min-height: 128px;
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: rgba(71,215,255,0.65);
+  background: rgba(255,255,255,0.075);
+  box-shadow: 0 0 0 4px rgba(71,215,255,0.1);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: rgba(165,176,192,0.62);
+}
+
+.contact-form .button {
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+}
 
 footer {
   display: flex;
@@ -579,7 +872,10 @@ footer {
   .hero { padding: 5.5rem 1rem 3rem; }
   .container { padding: 0 1rem; }
   .signal-row, .info-grid, .skills-grid, .projects-grid { grid-template-columns: 1fr; }
-  .project-card.featured { grid-column: auto; grid-template-columns: 1fr; }
+  .project-card.featured { grid-template-columns: 1fr; }
+  .kingdom-mock { grid-template-columns: 1fr; }
+  .king-image { display: none; }
+  .form-row { grid-template-columns: 1fr; }
   .timeline-item { grid-template-columns: 1fr; }
   .portrait-panel, .portrait-panel img { min-height: 460px; }
   .floating-card { position: relative; right: auto; bottom: auto; width: 100%; margin-top: 1rem; }
@@ -599,6 +895,7 @@ footer {
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
     <a class="nav-cta" href="#contact">Contact me</a>
   </nav>
@@ -607,10 +904,10 @@ footer {
     <section class="hero">
       <div class="hero-inner">
         <div class="hero-content">
-          <div class="eyebrow">Frontend Developer</div>
-          <h1>Building <span class="accent-text">future-ready</span> web interfaces.</h1>
+          <div class="eyebrow">Frontend & Backend Developer</div>
+          <h1>Building <span class="accent-text">future-ready</span> digital products.</h1>
           <p class="hero-copy">
-            I am TWIZEYIMANA NDEKEZI Opportun, a Kigali-based frontend developer focused on responsive websites, polished user interfaces, and clean React-ready code.
+            I am TWIZEYIMANA NDEKEZI Opportun, a Kigali-based developer focused on responsive interfaces, reliable backend logic, APIs, and clean full-stack code.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#projects">View Work</a>
@@ -629,8 +926,8 @@ footer {
           </div>
           <aside class="floating-card" aria-label="Availability">
             <div class="status"><span>Available</span><span class="pulse"></span></div>
-            <h3>Junior frontend roles and freelance builds</h3>
-            <p>Responsive websites, landing pages, React interfaces, and modern portfolio experiences.</p>
+            <h3>Frontend, backend, and freelance builds</h3>
+            <p>Responsive websites, landing pages, backend APIs, dashboards, and modern portfolio experiences.</p>
           </aside>
         </div>
       </div>
@@ -647,8 +944,8 @@ footer {
         </div>
         <div class="about-grid">
           <div class="panel reveal">
-            <p><strong>I build digital experiences with a frontend-first mindset.</strong> My work combines clean HTML, modern CSS, JavaScript, and Vue fundamentals to create websites that are easy to maintain and comfortable to use.</p>
-            <p>I enjoy transforming ideas into complete pages, improving visual details, and learning from real project constraints. I am currently open to junior frontend opportunities and freelance work.</p>
+            <p><strong>I build digital experiences across the frontend and backend.</strong> My work combines clean HTML, modern CSS, JavaScript, Vue fundamentals, API integration, and server-side logic to create products that are easy to maintain and comfortable to use.</p>
+            <p>I enjoy transforming ideas into complete pages, connecting them to useful backend functionality, improving visual details, and learning from real project constraints. I am currently open to junior developer opportunities and freelance work.</p>
           </div>
           <div class="info-grid reveal" style="transition-delay:0.08s">
             <div class="mini-stat"><b>Kigali</b><span>Based in Rwanda and open to remote collaboration.</span></div>
@@ -665,7 +962,7 @@ footer {
         <div class="section-head reveal">
           <div>
             <div class="section-label">Stack</div>
-            <h2>Tools for polished frontend work.</h2>
+            <h2>Tools for polished full-stack work.</h2>
           </div>
         </div>
         <div class="skills-grid">
@@ -676,18 +973,18 @@ footer {
           </article>
           <article class="skill-card reveal" style="transition-delay:0.06s">
             <div class="skill-icon">02</div>
-            <h3>Frameworks</h3>
-            <div class="tags"><span class="tag">React</span><span class="tag">Tailwind CSS</span><span class="tag">Bootstrap</span></div>
+            <h3>Frontend Frameworks</h3>
+            <div class="tags"><span class="tag">React</span><span class="tag">Vue</span><span class="tag">Tailwind CSS</span><span class="tag">Bootstrap</span></div>
           </article>
           <article class="skill-card reveal" style="transition-delay:0.12s">
             <div class="skill-icon">03</div>
-            <h3>Design Systems</h3>
-            <div class="tags"><span class="tag">Figma</span><span class="tag">Responsive UI</span><span class="tag">Animation</span></div>
+            <h3>Backend Development</h3>
+            <div class="tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">REST APIs</span><span class="tag">Databases</span></div>
           </article>
           <article class="skill-card reveal" style="transition-delay:0.18s">
             <div class="skill-icon">04</div>
             <h3>Workflow</h3>
-            <div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">npm</span><span class="tag">REST APIs</span></div>
+            <div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">npm</span><span class="tag">Deployment</span></div>
           </article>
         </div>
       </div>
@@ -703,10 +1000,57 @@ footer {
           <p class="section-note">A focused snapshot of the kind of interface work I like to build: responsive, direct, and visually memorable.</p>
         </div>
         <div class="projects-grid">
-          <article class="project-card featured reveal">
-            <div class="project-visual"><div class="browser-frame" aria-hidden="true"></div></div>
+          <article class="project-card featured tourism reveal">
+            <div class="project-visual">
+              <div class="browser-frame explore-preview">
+                <div class="explore-mock" aria-label="Explore Rwanda section preview">
+                  <div class="mock-nav"><span>Tembera u Rwanda</span><span>Explore</span></div>
+                  <div class="mock-content">
+                    <div class="mock-kicker">Discover destinations</div>
+                    <h4>Explore Rwanda</h4>
+                    <div class="mock-places">
+                      <div class="mock-place">Volcanoes</div>
+                      <div class="mock-place">Nyungwe</div>
+                      <div class="mock-place">Akagera</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="project-body">
-              <div class="project-kicker">Featured project</div>
+              <div class="project-kicker">Featured tourism website</div>
+              <h3 class="project-title">Tembera u Rwanda</h3>
+              <p class="project-desc">A tourism-focused web project presenting Rwanda as a travel destination with a clean layout, modern visuals, and responsive sections for visitors exploring places to discover.</p>
+              <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Vercel</span></div>
+              <div class="project-links">
+                <a href="https://tembera-urwanda10.vercel.app/" target="_blank" rel="noreferrer">Live Demo -></a>
+                <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub -></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card featured kingdom reveal" style="transition-delay:0.08s">
+            <div class="project-visual">
+              <div class="browser-frame kingdom-preview">
+                <div class="kingdom-mock" aria-label="RWANDA KINGS Game preview with a Rwandan king image">
+                  <div class="king-image">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mwami%20Kigeri%20IV%20Rwabugiri.jpg" alt="Mwami Kigeri IV Rwabugiri, King of Rwanda" />
+                  </div>
+                  <div class="kingdom-info">
+                    <span>History game</span>
+                    <h4>RWANDA KINGS</h4>
+                    <p>Learn about Rwandan monarchs through an interactive browser game.</p>
+                    <div class="kingdom-badges">
+                      <b>Quiz</b>
+                      <b>History</b>
+                      <b>JavaScript</b>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker">Interactive history project</div>
               <h3 class="project-title">RWANDA KINGS Game</h3>
               <p class="project-desc">A live game experience built with HTML, CSS, and JavaScript about kings of RWANDA and their history.</p>
               <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Netlify</span></div>
@@ -732,9 +1076,9 @@ footer {
           <article class="timeline-item reveal">
             <div class="period">2024 - Present</div>
             <div>
-              <h3 class="role">Junior Frontend Developer</h3>
+              <h3 class="role">Junior Full-Stack Developer</h3>
               <div class="company">Tech Company - Kigali, Rwanda</div>
-              <p>Building responsive interfaces, collaborating with teams, and improving component quality with React and Tailwind CSS.</p>
+              <p>Building responsive interfaces, connecting applications to APIs, collaborating with teams, and improving both frontend components and backend functionality.</p>
             </div>
           </article>
           <article class="timeline-item reveal">
@@ -755,13 +1099,43 @@ footer {
           <div class="contact-content">
             <div>
               <div class="section-label">Contact</div>
-              <h2>Let us build something sharp.</h2>
-              <p>I am available for junior frontend roles, portfolio redesigns, business websites, and freelance frontend projects.</p>
+              <h2>Ready to create a polished web experience.</h2>
+              <p>I am available for junior developer roles, portfolio redesigns, business websites, tourism sites, backend APIs, and freelance full-stack projects.</p>
+              <div class="contact-actions">
+                <a class="button primary" href="mailto:ndekeziopportun96@gmail.com">Email Me</a>
+                <a class="button ghost" href="tel:+250788123456">Call</a>
+                <a class="button ghost" href="https://linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+              </div>
             </div>
-            <div class="contact-actions">
-              <a class="button primary" href="mailto:ndekeziopportun96@gmail.com">Email Me</a>
-              <a class="button ghost" href="tel:+250788123456">Call</a>
-              <a class="button ghost" href="https://linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <div class="contact-side">
+              <form class="contact-form" action="mailto:ndekeziopportun96@gmail.com" method="post" enctype="text/plain">
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="name">Name</label>
+                    <input id="name" name="Name" type="text" placeholder="Your name" required />
+                  </div>
+                  <div class="form-field">
+                    <label for="email">Email</label>
+                    <input id="email" name="Email" type="email" placeholder="you@example.com" required />
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label for="subject">Subject</label>
+                  <input id="subject" name="Subject" type="text" placeholder="Project, role, or question" required />
+                </div>
+                <div class="form-field">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="Message" placeholder="Tell me what you would like to build..." required></textarea>
+                </div>
+                <button class="button primary" type="submit">Send Message</button>
+              </form>
+
+              <div class="contact-card" aria-label="Contact details">
+                <div class="contact-line"><span>Email</span><strong>ndekeziopportun96@gmail.com</strong></div>
+                <div class="contact-line"><span>Phone</span><strong>+250 788 123 456</strong></div>
+                <div class="contact-line"><span>Location</span><strong>Kigali, Rwanda</strong></div>
+                <div class="contact-line"><span>Focus</span><strong>Frontend & backend development</strong></div>
+              </div>
             </div>
           </div>
         </div>
